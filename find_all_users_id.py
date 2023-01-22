@@ -9,4 +9,8 @@ def find_all_users_id(data: dict)->list:
     Returns:
         list: List containing all the users id
     """
-    return
+    return list(set([_uid['from_id'] for _uid in data['messages'] if _uid['type'] == "message"]))
+
+data = read_data('data/result.json')
+if __name__ == '__main__':
+    print(find_all_users_id(data))
